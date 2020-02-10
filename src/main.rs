@@ -154,11 +154,11 @@ are dominant."
 #[test]
 fn test_bv() {
     let mut bv = bitvec![ Msb0, u8;];
-    let src = vec![8u8, 16u8, 32u8, 64u8, 128u8];
 
-    for x in src.bits::<Msb0>() {
-        bv.push(*x);
-    }
-    // bv.push(bits);
+    // let src = vec![8u8, 16u8, 32u8, 64u8, 128u8, 64u8];
+
+    // for x in src.bits::<Msb0>() {
+    //     bv.push(*x);
+    // }
     render(&bv);
 }
