@@ -11,21 +11,23 @@ extern crate bitvec;
 
 // #[cfg(feature = "std")]
 
-use bitvec::prelude::{
-	//  `bitvec!` macro
-	bitvec,
-	//  element-traversal trait (you shouldn’t explicitly need this)
-	BitOrder,
-	//  slice type, analagous to `[u1]`
-	BitSlice,
-	//  trait unifying the primitives (you shouldn’t explicitly need this)
-	BitStore,
-	//  vector type, analagous to `Vec<u1>`
-	BitVec,
-	Lsb0,
-	//  directionality type markers
-	Msb0,
-};
+// use bitvec::prelude::{
+// 	//  `bitvec!` macro
+// 	bitvec,
+// 	//  element-traversal trait (you shouldn’t explicitly need this)
+// 	BitOrder,
+// 	//  slice type, analagous to `[u1]`
+// 	BitSlice,
+// 	//  trait unifying the primitives (you shouldn’t explicitly need this)
+// 	BitStore,
+// 	//  vector type, analagous to `Vec<u1>`
+// 	BitVec,
+// 	Lsb0,
+// 	//  directionality type markers
+// 	Msb0,
+// };
+
+use bitvec::prelude::*;
 // #[cfg(feature = "std")]
 use std::iter::repeat;
 
@@ -151,10 +153,12 @@ are dominant."
 
 #[test]
 fn test_bv() {
-    let mut bv = bitvec![ Msb0, u8; 1, 1, 1, 1, 1, 1, 1, 1];
-    let src = 8u8;
-    let bits = src.bits::<Msb0>();
+    let mut bv = bitvec![ Msb0, u8;];
+    let src = vec![8u8, 16u8, 32u8, 64u8, 128u8];
 
-
+    for x in src.bits::<Msb0>() {
+        bv.push(*x);
+    }
+    // bv.push(bits);
     render(&bv);
 }
