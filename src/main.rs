@@ -29,6 +29,27 @@ use bitvec::prelude::{
 // #[cfg(feature = "std")]
 use std::iter::repeat;
 
+fn render<O, T>(bs: &BitSlice<O, T>)
+where
+    O: BitOrder,
+    T: BitStore,
+{
+    println!(
+	"Memory information: {} elements, {} bits",
+	bs.as_slice().len(),
+	bs.len(),
+    );
+    println!("Print out the semantic contents");
+    println!("{:#?}", bs);
+    println!("Print out the memory contents");
+    println!("{:?}", bs.as_slice());
+    println!("Show the bits in memory");
+    for elt in bs.as_slice() {
+	println!("{:0w$b} ", elt, w = std::mem::size_of::<T>() * 8);
+    }
+    println!();
+}
+
 // #[cfg(feature = "std")]
 fn main() {
 	let bv = bitvec![Msb0, u8;  //  Default types are `order::Local` and `usize`
@@ -128,8 +149,12 @@ are dominant."
 // 	//  This example requires the standard library.
 // }
 
-// #[test]
-// fn test_bv() {
-//     let mut bv = bitvec![BigEndian, u8; 1];
-//     render(&bv);
-// }
+#[test]
+fn test_bv() {
+    let mut bv = bitvec![ Msb0, u8; 1, 1, 1, 1, 1, 1, 1, 1];
+    let src = 8u8;
+    let bits = src.bits::<Msb0>();
+
+
+    render(&bv);
+}
