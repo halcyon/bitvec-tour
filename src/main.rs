@@ -11,23 +11,23 @@ extern crate bitvec;
 
 // #[cfg(feature = "std")]
 
-// use bitvec::prelude::{
-// 	//  `bitvec!` macro
-// 	bitvec,
-// 	//  element-traversal trait (you shouldn’t explicitly need this)
-// 	BitOrder,
-// 	//  slice type, analagous to `[u1]`
-// 	BitSlice,
-// 	//  trait unifying the primitives (you shouldn’t explicitly need this)
-// 	BitStore,
-// 	//  vector type, analagous to `Vec<u1>`
-// 	BitVec,
-// 	Lsb0,
-// 	//  directionality type markers
-// 	Msb0,
-// };
+use bitvec::prelude::{
+        AsBits,
+	//  `bitvec!` macro
+	bitvec,
+	//  element-traversal trait (you shouldn’t explicitly need this)
+	BitOrder,
+	//  slice type, analagous to `[u1]`
+	BitSlice,
+	//  trait unifying the primitives (you shouldn’t explicitly need this)
+	BitStore,
+	//  vector type, analagous to `Vec<u1>`
+	BitVec,
+	Lsb0,
+	//  directionality type markers
+	Msb0,
+};
 
-use bitvec::prelude::*;
 // #[cfg(feature = "std")]
 use std::iter::repeat;
 
